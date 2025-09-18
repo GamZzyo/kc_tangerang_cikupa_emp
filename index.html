@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KC Tangerang Cikupa - 17609</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-top: #58a0e0;
+      --bg-bottom: #375aa8;
+      --card-bg: #ffffff;
+      --muted: #7c8aa3;
+      --accent: #ffd400; /* for small highlights similar to mandiri yellow */
+      --container-width: 380px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:24px 12px;
+      color:#fff;
+    }
+
+    /* main card container */
+    .card {
+      width:100%;
+      max-width: var(--container-width);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border-radius:14px;
+      padding:22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      position:relative;
+      min-height:640px;
+      overflow:hidden;
+    }
+
+    /* top-left small circle with star (like in your screenshot) */
+    .top-left-btn{
+      position:absolute;
+      left:12px;
+      top:12px;
+      background: rgba(255,255,255,0.18);
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#0b2b4a;
+      font-weight:700;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.18);
+    }
+    .top-left-btn svg{filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));}
+
+    /* logo */
+    .logo-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:6px;
+    }
+    .logo {
+      width:92px;
+      height:92px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.06), transparent 30%), rgba(0,0,0,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border: 6px solid rgba(255,255,255,0.06);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25), inset 0 -6px 12px rgba(0,0,0,0.08);
+    }
+    .logo img{
+      width:68%;
+      height:68%;
+      object-fit:contain;
+      border-radius:50%;
+      display:block;
+    }
+
+    /* title & address */
+    .title{
+      text-align:center;
+      margin-top:12px;
+    }
+    .title h1{
+      margin:0;
+      font-size:20px;
+      color:#ffd54a; /* yellow-ish */
+      font-weight:700;
+      letter-spacing:0.2px;
+    }
+    .address{
+      margin-top:8px;
+      color: rgba(255,255,255,0.92);
+      font-weight:600;
+      font-size:12px;
+      line-height:1.25;
+    }
+    .subaddress{
+      margin-top:10px;
+      background: rgba(255,255,255,0.06);
+      padding:12px;
+      border-radius:6px;
+      color:#fff;
+      font-size:12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* links list */
+    .links{
+      margin-top:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      padding-bottom:16px;
+    }
+    .link-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,1));
+      color:#243044;
+      padding:12px;
+      border-radius:6px;
+      box-shadow: 0 6px 14px rgba(6,20,45,0.12);
+      align-items:center;
+      justify-content:space-between;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .link-left{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      min-width:0;
+    }
+    .thumb{
+      width:46px;
+      height:46px;
+      border-radius:6px;
+      background:#f6f6f6;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:12px;
+      color:#333;
+      overflow:hidden;
+    }
+    .link-text{
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+    }
+    .link-title{
+      font-weight:600;
+      font-size:14px;
+      white-space:nowrap;
+      text-overflow:ellipsis;
+      overflow:hidden;
+    }
+    .link-sub{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:4px;
+      white-space:nowrap;
+      text-overflow:ellipsis;
+      overflow:hidden;
+    }
+    .menu-dots{
+      width:28px;
+      height:28px;
+      border-radius:6px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      opacity:0.9;
+    }
+
+    .link-item:active{transform:translateY(1px)}
+    .link-item:hover{box-shadow: 0 10px 24px rgba(6,20,45,0.16)}
+
+    /* small footer */
+    .footer {
+      margin-top:14px;
+      text-align:center;
+      color: rgba(255,255,255,0.85);
+      font-size:12px;
+      opacity:0.95;
+    }
+
+    /* responsive */
+    @media (max-width:420px){
+      body{padding:16px}
+      .card{min-height:unset}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" role="main">
+    <div class="logo-wrap" aria-hidden>
+      <div class="logo">
+        <!-- replace src with your logo -->
+        <img src="https://gamzzyo.github.io/penyimpanan/bank-mandiri-2.png" alt="logo" style="width:100%;height:100%;object-fit:cover">
+      </div>
+    </div>
+
+    <div class="title" aria-label="branch name">
+      <h1>KC Tangerang Cikupa</h1>
+      <div class="address">Pertokoan Cikupa Blok B No.3, Jl. Raya Serang Km. 14, Talagasari, Kec. Cikupa, Kabupaten Tangerang, Banten 15710</div>
+    </div>
+
+    <div class="links" aria-label="links list">
+      <!-- Example link item -->
+      <a class="link-item" href="https://gamzzyo.github.io/penyimpanan/peta.html" onclick="return true;">
+        <div class="link-left">
+          <div class="thumb"><img src="https://gamzzyo.github.io/penyimpanan/maps.jpeg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+          <div class="link-text">
+            <div class="link-title">Peta Sebaran EDC & LVM</div>
+            <!--<div class="link-sub">Gabunhg yuk di sini..</div>-->
+          </div>
+        </div>
+        <div class="menu-dots" title="opsi">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <circle cx="5" cy="12" r="1.5" fill="#9aa6b8"/>
+            <circle cx="12" cy="12" r="1.5" fill="#9aa6b8"/>
+            <circle cx="19" cy="12" r="1.5" fill="#9aa6b8"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="link-item" href="https://forms.gle/fy1SkGKqnSUCUZpk6" onclick="return true;">
+        <div class="link-left">
+          <div class="thumb"><img src="https://gamzzyo.github.io/penyimpanan/form.jpeg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+          <div class="link-text">
+            <div class="link-title">Input Form</div>
+            <!--<div class="link-sub">klik di sini..</div>-->
+          </div>
+        </div>
+        <div class="menu-dots" title="opsi">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <circle cx="5" cy="12" r="1.5" fill="#9aa6b8"/>
+            <circle cx="12" cy="12" r="1.5" fill="#9aa6b8"/>
+            <circle cx="19" cy="12" r="1.5" fill="#9aa6b8"/>
+          </svg>
+        </div>
+      </a>
+
+      <a class="link-item" href="https://gamzzyo.github.io/kc_tangerang_cikupa/index.html" onclick="return true;">
+        <div class="link-left">
+          <div class="thumb"><img src="https://gamzzyo.github.io/penyimpanan/arrow-circle-left.png" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+          <div class="link-text">
+            <div class="link-title">Kembali ke awal</div>
+          </div>
+        </div>
+        <div class="menu-dots" title="opsi">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <circle cx="5" cy="12" r="1.5" fill="#9aa6b8"/>
+            <circle cx="12" cy="12" r="1.5" fill="#9aa6b8"/>
+            <circle cx="19" cy="12" r="1.5" fill="#9aa6b8"/>
+          </svg>
+        </div>
+      </a>
+    <div class="footer">© KC Tangerang Cikupa, 2025</div>
+  </div>
+
+  <script>
+    // small demo: clicking the menu dots shows a tiny toast (replace or expand as needed)
+    document.querySelectorAll('.menu-dots').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        const rect = btn.getBoundingClientRect();
+        // simple action: alert or show contextual menu - here we use alert for demo
+        alert('Opsi link — salin tautan / edit / hapus (demo)');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
